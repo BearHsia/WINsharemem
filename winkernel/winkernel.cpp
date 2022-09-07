@@ -2,10 +2,11 @@
 //
 
 #include <iostream>
-
+#include "..\share_lib\share_kernelside.h"
 int main()
 {
     std::cout << "Hello World!\n";
+	SHARE_MEM_KERNEL_SIDE* shareMemoryKernelPtr = new SHARE_MEM_KERNEL_SIDE();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
