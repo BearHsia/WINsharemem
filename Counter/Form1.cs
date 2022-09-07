@@ -13,11 +13,13 @@ namespace Counter
     public partial class Form1 : Form
     {
         private int form_counter = 0;
-        private bool enable = false;
+        private bool initialonce = false;
         public Form1()
         {
             InitializeComponent();
         }
+
+        public sharedll.ShareMemoryCSharp shareMemoryCSharp_;
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -26,7 +28,12 @@ namespace Counter
 
         private void FORM_timer_Tick(object sender, EventArgs e)
         {
-            if (enable == false) return;
+            if (shareMemoryCSharp_ == null)
+                return;
+            if (shareMemoryCSharp_.IsShareMemoryReady() == false)
+                return;
+            if (shareMemoryCSharp_.IsCountEnabled() == false)
+                return;
             if (form_counter < Int32.MaxValue)
                 form_counter++;
             else
@@ -36,12 +43,20 @@ namespace Counter
 
         private void MMI_timer_Tick(object sender, EventArgs e)
         {
+            if (shareMemoryCSharp_ == null)
+                return;
+            if (shareMemoryCSharp_.IsShareMemoryReady() == false)
+                return;
+            if (shareMemoryCSharp_.IsCountEnabled() == false)
+                return;
             label6.Text = form_counter.ToString();
         }
 
         private void init_button_Click(object sender, EventArgs e)
         {
-            enable = true;
+            if (initialonce == true) return;
+            initialonce = true;
+            shareMemoryCSharp_ = new sharedll.ShareMemoryCSharp();
         }
     }
 }
