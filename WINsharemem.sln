@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "share_lib", "share_lib\shar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Counter", "Counter\Counter.csproj", "{09142D5A-7E5B-419F-845E-6684F8034B34}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "share_dll", "share_dll\share_dll.vcxproj", "{33B4DC44-39C9-43BA-84E7-FBB13C3CC4E4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,16 @@ Global
 		{09142D5A-7E5B-419F-845E-6684F8034B34}.Release|x64.Build.0 = Release|Any CPU
 		{09142D5A-7E5B-419F-845E-6684F8034B34}.Release|x86.ActiveCfg = Release|Any CPU
 		{09142D5A-7E5B-419F-845E-6684F8034B34}.Release|x86.Build.0 = Release|Any CPU
+		{33B4DC44-39C9-43BA-84E7-FBB13C3CC4E4}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{33B4DC44-39C9-43BA-84E7-FBB13C3CC4E4}.Debug|x64.ActiveCfg = Debug|x64
+		{33B4DC44-39C9-43BA-84E7-FBB13C3CC4E4}.Debug|x64.Build.0 = Debug|x64
+		{33B4DC44-39C9-43BA-84E7-FBB13C3CC4E4}.Debug|x86.ActiveCfg = Debug|Win32
+		{33B4DC44-39C9-43BA-84E7-FBB13C3CC4E4}.Debug|x86.Build.0 = Debug|Win32
+		{33B4DC44-39C9-43BA-84E7-FBB13C3CC4E4}.Release|Any CPU.ActiveCfg = Release|Win32
+		{33B4DC44-39C9-43BA-84E7-FBB13C3CC4E4}.Release|x64.ActiveCfg = Release|x64
+		{33B4DC44-39C9-43BA-84E7-FBB13C3CC4E4}.Release|x64.Build.0 = Release|x64
+		{33B4DC44-39C9-43BA-84E7-FBB13C3CC4E4}.Release|x86.ActiveCfg = Release|Win32
+		{33B4DC44-39C9-43BA-84E7-FBB13C3CC4E4}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

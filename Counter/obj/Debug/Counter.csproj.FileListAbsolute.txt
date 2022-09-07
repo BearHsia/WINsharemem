@@ -8,3 +8,6 @@ C:\Users\user\Desktop\my_win_sharememory\winkernel\Counter\obj\Debug\Counter.csp
 C:\Users\user\Desktop\my_win_sharememory\winkernel\Counter\obj\Debug\Counter.csproj.CoreCompileInputs.cache
 C:\Users\user\Desktop\my_win_sharememory\winkernel\Counter\obj\Debug\Counter.exe
 C:\Users\user\Desktop\my_win_sharememory\winkernel\Counter\obj\Debug\Counter.pdb
+C:\Users\user\Desktop\my_win_sharememory\winkernel\Counter\bin\Debug\share_dll.dll
+C:\Users\user\Desktop\my_win_sharememory\winkernel\Counter\bin\Debug\share_dll.pdb
+C:\Users\user\Desktop\my_win_sharememory\winkernel\Counter\obj\Debug\Counter.csproj.CopyComplete

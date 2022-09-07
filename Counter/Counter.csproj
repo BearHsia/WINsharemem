@@ -79,5 +79,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\share_dll\share_dll.vcxproj">
+      <Project>{33b4dc44-39c9-43ba-84e7-fbb13c3cc4e4}</Project>
+      <Name>share_dll</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
