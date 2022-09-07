@@ -3,19 +3,67 @@
 
 #include <iostream>
 #include "..\share_lib\share_kernelside.h"
+
+HANDLE gDoneEvent;
+void CALLBACK TimerRoutine(PVOID lpParam, BOOLEAN TimerOrWaitFired)
+{
+	if (lpParam != NULL)
+	{
+		((SHARE_MEM_KERNEL_SIDE*)(lpParam))->main();
+	}
+	if(!((SHARE_MEM_KERNEL_SIDE*)(lpParam))->IsRtxRunningState())
+		SetEvent(gDoneEvent);
+}
+
+void NonRealTimeLoop(SHARE_MEM_KERNEL_SIDE* shareMemoryKernelPtr)
+{
+	if (shareMemoryKernelPtr != NULL)
+		shareMemoryKernelPtr->testNrtMain();
+}
+
 int main()
 {
     std::cout << "Hello World!\n";
 	SHARE_MEM_KERNEL_SIDE* shareMemoryKernelPtr = new SHARE_MEM_KERNEL_SIDE();
+	shareMemoryKernelPtr->init();
+	std::cout << "SHM is initialized!\n";
+
+	gDoneEvent = CreateEvent(NULL, TRUE, FALSE, NULL);
+	HANDLE hTimer = NULL;
+	HANDLE hTimerQueue = CreateTimerQueue();
+	
+	CreateTimerQueueTimer(
+		&hTimer,
+		hTimerQueue,
+		(WAITORTIMERCALLBACK)TimerRoutine,
+		(PVOID)shareMemoryKernelPtr,
+		0, WIN_KERNEL_SAMPLING_TIME, 0);
+	std::cout << "Create Timer!\n";
+
+	int loopcount = 0;
+	std::cout << "Start!\n";
+	while (shareMemoryKernelPtr->IsRtxRunningState())
+	{
+		//nrt main loop
+		NonRealTimeLoop(shareMemoryKernelPtr);
+		Sleep(WIN_KERNEL_LOOP_SLEEP_TIME);
+		loopcount++;
+		if(loopcount>10)
+			shareMemoryKernelPtr->ShareMemoryDataPtr->systemRunning = FALSE;
+	}
+	std::cout << "Stop!\n";
+
+	if (WaitForSingleObject(gDoneEvent, INFINITE) != WAIT_OBJECT_0)
+		printf("WaitForSingleObject failed (%d)\n", GetLastError());
+	CloseHandle(gDoneEvent);
+
+	// Delete all timers in the timer queue.
+	if (!DeleteTimerQueue(hTimerQueue))
+		printf("DeleteTimerQueue failed (%d)\n", GetLastError());
+
+	shareMemoryKernelPtr->setEvent();
+	delete shareMemoryKernelPtr;
+	std::cout << "SHM closed!\n";
+	ExitProcess(0);
+	return 0;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
