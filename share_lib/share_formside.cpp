@@ -8,14 +8,15 @@ SHARE_MEM_FORM_SIDE::SHARE_MEM_FORM_SIDE()
 	wcscpy_s(this->snEventName, CNC_EVENT_NAME);
 	wcscpy_s(this->snShmemName, CNC_SHMEM_NAME);
 
-	/*wchar_t arrDirStr[512];
+	wchar_t arrDirStr[512];
 	GetCurrentDirectory(512, arrDirStr);
-	//wcscpy_s(this->RtssPathName, L"\"");
+	wcscpy_s(this->RtssPathName, L""); // the first argument of lstrcat() must be null-terminated
 	lstrcat((RtssPathName), arrDirStr);
+	
 	//lstrcat(RtssPathName, L"..\\Debug\\winkernel.exe\"");
 	lstrcat(RtssPathName, L"\\winkernel.exe");
-	printf("%ls", RtssPathName);
-	FILE* fp;
+	//printf("%ls", RtssPathName);
+	/*FILE* fp;
 	errno_t err;
 	if ((err = fopen_s(&fp, "output.txt", "w")) == NULL) {
 		fprintf(fp, "%ls", RtssPathName);
@@ -42,7 +43,7 @@ bool SHARE_MEM_FORM_SIDE::init()
 	ZeroMemory(&startUpInfo, sizeof(STARTUPINFO));
 	startUpInfo.cb = sizeof(STARTUPINFO);
 	ZeroMemory(&processInfo, sizeof(PROCESS_INFORMATION));
-
+	
 	bResult = CreateProcess(
 		RtssPathName,  // _In_opt_ LPCWSTR lpApplicationName,
 		NULL,		   // _Inout_opt_ LPWSTR lpCommandLine,
@@ -54,19 +55,20 @@ bool SHARE_MEM_FORM_SIDE::init()
 		NULL,		   // _In_opt_ LPCWSTR lpCurrentDirectory,
 		&startUpInfo,  // _In_ LPSTARTUPINFOW lpStartupInfo,
 		&processInfo); // _Out_ LPPROCESS_INFORMATION lpProcessInformation
-
+	
 	if (bResult == false)
 	{
 		printf("CreateProcess failed (%d).\n", GetLastError());
 		return false;
 	}
-
+	
 	//wait for windows console
-	DWORD OpenState;
-	OpenState = WaitForSingleObject(processInfo.hProcess, INFINITE);
-
-	ShareMemoryDataPtr->systemRunning = true;
+	//DWORD OpenState;
+	//OpenState = WaitForSingleObject(processInfo.hProcess, INFINITE);
+	
 	waitForEvent();
+	ShareMemoryDataPtr->systemRunning = true;
+	
 	return true;
 }
 
