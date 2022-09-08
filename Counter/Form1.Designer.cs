@@ -38,12 +38,13 @@
             this.MMI_timer = new System.Windows.Forms.Timer(this.components);
             this.FORM_timer = new System.Windows.Forms.Timer(this.components);
             this.init_button = new System.Windows.Forms.Button();
+            this.SW_button = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(80, 160);
+            this.label1.Location = new System.Drawing.Point(25, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(92, 12);
             this.label1.TabIndex = 0;
@@ -53,7 +54,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(88, 205);
+            this.label2.Location = new System.Drawing.Point(33, 63);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(84, 12);
             this.label2.TabIndex = 1;
@@ -62,7 +63,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(97, 248);
+            this.label3.Location = new System.Drawing.Point(42, 106);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(75, 12);
             this.label3.TabIndex = 2;
@@ -71,7 +72,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(251, 159);
+            this.label4.Location = new System.Drawing.Point(196, 17);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(32, 12);
             this.label4.TabIndex = 3;
@@ -80,7 +81,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(251, 205);
+            this.label5.Location = new System.Drawing.Point(196, 63);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(32, 12);
             this.label5.TabIndex = 4;
@@ -89,7 +90,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(251, 248);
+            this.label6.Location = new System.Drawing.Point(196, 106);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(32, 12);
             this.label6.TabIndex = 5;
@@ -108,7 +109,7 @@
             // 
             // init_button
             // 
-            this.init_button.Location = new System.Drawing.Point(51, 306);
+            this.init_button.Location = new System.Drawing.Point(34, 146);
             this.init_button.Name = "init_button";
             this.init_button.Size = new System.Drawing.Size(75, 23);
             this.init_button.TabIndex = 6;
@@ -116,11 +117,22 @@
             this.init_button.UseVisualStyleBackColor = true;
             this.init_button.Click += new System.EventHandler(this.init_button_Click);
             // 
+            // SW_button
+            // 
+            this.SW_button.Location = new System.Drawing.Point(186, 146);
+            this.SW_button.Name = "SW_button";
+            this.SW_button.Size = new System.Drawing.Size(75, 23);
+            this.SW_button.TabIndex = 7;
+            this.SW_button.Text = "counter_SW";
+            this.SW_button.UseVisualStyleBackColor = true;
+            this.SW_button.Click += new System.EventHandler(this.SW_button_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(697, 380);
+            this.ClientSize = new System.Drawing.Size(294, 192);
+            this.Controls.Add(this.SW_button);
             this.Controls.Add(this.init_button);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -146,6 +158,7 @@
         private System.Windows.Forms.Timer MMI_timer;
         private System.Windows.Forms.Timer FORM_timer;
         private System.Windows.Forms.Button init_button;
+        private System.Windows.Forms.Button SW_button;
     }
 }
 

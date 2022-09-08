@@ -18,4 +18,6 @@ Class sharedll.ShareMemoryCSharp: AutoLayout, AnsiClass, Class, Public, BeforeFi
     EnableCount(): PrivateScope, Public, HideBySig
     DisableCount(): PrivateScope, Public, HideBySig
     IsCountEnabled(): PrivateScope, Public, HideBySig
+    InterruptCountValue(): PrivateScope, Public, HideBySig
+    ForloopCountValue(): PrivateScope, Public, HideBySig
     Dispose(): PrivateScope, Public, Final, Virtual, HideBySig

@@ -37,5 +37,15 @@ namespace sharedll {
 				return shareMemory_->ShareMemoryDataPtr->Enable;
 			return false;
 		}
+		int  InterruptCountValue() {
+			if (shareMemory_ && shareMemory_->ShareMemoryDataPtr)
+				return shareMemory_->ShareMemoryDataPtr->RealTimeCounter;
+			return 0;
+		}
+		int  ForloopCountValue() {
+			if (shareMemory_ && shareMemory_->ShareMemoryDataPtr)
+				return shareMemory_->ShareMemoryDataPtr->nonRealTimeCounter;
+			return 0;
+		}
 	};
 }

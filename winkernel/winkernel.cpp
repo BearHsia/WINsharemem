@@ -40,16 +40,14 @@ int main()
 		0, WIN_KERNEL_SAMPLING_TIME, 0);
 	std::cout << "Create Timer!\n";
 
-	int loopcount = 0;
+	shareMemoryKernelPtr->setEvent(); //signal the process is ready
+
 	std::cout << "Start!\n";
 	while (shareMemoryKernelPtr->IsRtxRunningState())
 	{
 		//nrt main loop
 		NonRealTimeLoop(shareMemoryKernelPtr);
 		Sleep(WIN_KERNEL_LOOP_SLEEP_TIME);
-		loopcount++;
-		if(loopcount>10)
-			shareMemoryKernelPtr->ShareMemoryDataPtr->systemRunning = FALSE;
 	}
 	std::cout << "Stop!\n";
 
@@ -61,7 +59,7 @@ int main()
 	if (!DeleteTimerQueue(hTimerQueue))
 		printf("DeleteTimerQueue failed (%d)\n", GetLastError());
 
-	shareMemoryKernelPtr->setEvent();
+	shareMemoryKernelPtr->setEvent();  //signal the process is closed
 	delete shareMemoryKernelPtr;
 	std::cout << "SHM closed!\n";
 	ExitProcess(0);

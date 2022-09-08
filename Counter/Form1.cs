@@ -49,7 +49,10 @@ namespace Counter
                 return;
             if (shareMemoryCSharp_.IsCountEnabled() == false)
                 return;
+
             label6.Text = form_counter.ToString();
+            label5.Text = (shareMemoryCSharp_.InterruptCountValue()).ToString();
+            label4.Text = (shareMemoryCSharp_.ForloopCountValue()).ToString();
         }
 
         private void init_button_Click(object sender, EventArgs e)
@@ -57,6 +60,18 @@ namespace Counter
             if (initialonce == true) return;
             initialonce = true;
             shareMemoryCSharp_ = new sharedll.ShareMemoryCSharp();
+        }
+
+        private void SW_button_Click(object sender, EventArgs e)
+        {
+            if (shareMemoryCSharp_ == null)
+                return;
+            if (shareMemoryCSharp_.IsShareMemoryReady() == false)
+                return;
+            if (shareMemoryCSharp_.IsCountEnabled() == true)
+                shareMemoryCSharp_.DisableCount();
+            else
+                shareMemoryCSharp_.EnableCount();
         }
     }
 }
